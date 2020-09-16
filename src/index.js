@@ -18,7 +18,7 @@ import toggleTeamImg from './modules/toggleTeamImg';
 import calc from './modules/calc';
 import sendForm from './modules/sendForm';
 
-setInterval(countTimer, 1000, '05 Septemper 2020')
+setInterval(countTimer, 1000, '07 Septemper 2020')
 toggleMenu();
 togglePopUp();
 tabs();
