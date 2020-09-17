@@ -9,7 +9,8 @@ const countTimer = (deadline) => {
             timeRemaining = (dateStop - dateNow) / 1000,
             seconds = Math.floor(timeRemaining % 60),
             minutes = Math.floor((timeRemaining / 60) % 60),
-            hours = Math.floor((timeRemaining / 60) / 60);
+            hours = Math.floor((timeRemaining / 60) / 60 % 24),
+            days = Math.floor((timeRemaining / 60) / 60 / 24);
 
             if (seconds < 0) {
                 seconds = 0;
@@ -21,7 +22,7 @@ const countTimer = (deadline) => {
                 hours = 0;
             }
 
-            return {timeRemaining, hours, minutes, seconds};
+            return {timeRemaining, days, hours, minutes, seconds};
     }
 
     const addZero = (number) => {
@@ -33,7 +34,7 @@ const countTimer = (deadline) => {
 
     const updateClock = () => {
         let timer = getTimeRemaining();
-        timerHours.textContent = addZero(timer.hours);
+        timerHours.textContent = addZero(timer.days) + ' : ' + addZero(timer.hours);
         timerMinutes.textContent = addZero(timer.minutes);
         timerSeconds.textContent = addZero(timer.seconds);
 
