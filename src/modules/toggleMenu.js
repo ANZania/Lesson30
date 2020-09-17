@@ -12,7 +12,7 @@ const toggleMenu = () => {
 
         if (target.classList.contains('close-btn')) {
             handlerMenu();
-        } else if (target.closest('ul>li')) {
+        } else if (target.closest('li>a')) {
             handlerMenu();
         } 
 

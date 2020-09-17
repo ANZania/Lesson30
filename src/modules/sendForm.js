@@ -8,6 +8,7 @@ const sendForm = () => {
     statusMessage.style.textDecorationColor = 'white';
     const phoneInputs = document.querySelectorAll('.form-phone');
     const nameInputs = document.querySelectorAll('.form-name');
+    const messageInput = document.getElementById('form2-message');
 
     const validatePhone = (input) => {
         input.value = input.value.replace(/[^0-9+]/ig, '');
@@ -15,6 +16,9 @@ const sendForm = () => {
     const validateName = (input) => {
         input.value = input.value.replace(/[^А-Яа-я ]/ig, '');
     };
+    const validateMsg = (input) => {
+        input.value = input.value.replace(/[\w]/ig, '');
+    }
     const clearInputs = () => {
         forms.forEach((form) => {
             const inputs = form.querySelectorAll('input');
@@ -32,6 +36,9 @@ const sendForm = () => {
         input.addEventListener('input', () => {
             validateName(input);
         });
+    })
+    messageInput.addEventListener('input', () => {
+        validateMsg(messageInput);
     })
 
     const postData = (body) => {
@@ -61,10 +68,16 @@ const sendForm = () => {
                         throw new Error('network status is not 200')
                     };
                     statusMessage.textContent = succesMessage;
+                    setTimeout(() => {
+                        statusMessage.textContent = '';
+                    }, 3000);
                     clearInputs();
                 })
                 .catch((error) => {
                     statusMessage.textContent = errorMessage;
+                    setTimeout(() => {
+                        statusMessage.textContent = '';
+                    }, 3000);
                     clearInputs();
                     console.error(error);
                 });
