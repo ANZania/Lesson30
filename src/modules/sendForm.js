@@ -17,7 +17,7 @@ const sendForm = () => {
         input.value = input.value.replace(/[^А-Яа-я ]/ig, '');
     };
     const validateMsg = (input) => {
-        input.value = input.value.replace(/[\w]/ig, '');
+        input.value = input.value.replace(/[^?.,:;"!А-Я0-9 ]+/ig, '');
     }
     const clearInputs = () => {
         forms.forEach((form) => {
