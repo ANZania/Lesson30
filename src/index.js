@@ -18,7 +18,10 @@ import toggleTeamImg from './modules/toggleTeamImg';
 import calc from './modules/calc';
 import sendForm from './modules/sendForm';
 
-setInterval(countTimer, 1000, '31 May 2021')
+let deadline = new Date;
+deadline.setDate(deadline.getDate() + 2);
+
+setInterval(countTimer, 1000, deadline)
 toggleMenu();
 togglePopUp();
 tabs();
